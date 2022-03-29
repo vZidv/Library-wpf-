@@ -66,27 +66,60 @@
         </Style>
     </Page.Resources>
     <Grid>
+        <Image Height="120" Width="400" VerticalAlignment="Top" Source="Logo.png" Margin="0,30,0,0"/>
+
+        <TextBlock FontSize="24" Text="Логин" FontWeight="Bold" Foreground="#FFC5C5C5"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="1" Margin="0,0,0,155"
+                   IsHitTestVisible="False">
+            <TextBlock.Style>
+                 <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text,ElementName=login_Textbox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                 </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBlock FontSize="24" Text="Пароль" FontWeight="Bold" Foreground="#FFC5C5C5"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="1" Margin="0,0,0,45"
+                   IsHitTestVisible="False">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text,ElementName=password_Textbox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox x:Name="login_Textbox" MinWidth="300" MinHeight="45" Margin="0,0,0,10" 
-                     Text="Логин" Foreground="DarkGray" TextWrapping="Wrap"
-                     FontSize="24" TextAlignment ="Center"
+                     Foreground="DarkGray" TextWrapping="Wrap"
+                     FontSize="24" TextAlignment="Center" Padding="5"
                      BorderBrush="{x:Null}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="7"/>
                     </Style>
                 </TextBox.Resources>
+
+                
             </TextBox>
             <TextBox x:Name="password_Textbox" MinWidth="300" MinHeight="45" Margin="0,0,0,10" 
-                     Text="Пароль" Foreground="DarkGray" TextWrapping="Wrap"
+                     Foreground="DarkGray" TextWrapping="Wrap"
                      FontSize="24" TextAlignment ="Center"
-                     BorderBrush="{x:Null}">
+                     BorderBrush="{x:Null}" Padding="5">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="7"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
+            
 
             <Button x:Name="authorization_Button" MinHeight="50" Width="200" MinWidth="200" Margin="0,20"
                     Content="Авторизоваться" Background="#bbc9db"

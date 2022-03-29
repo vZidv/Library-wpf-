@@ -143,6 +143,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Library.mdf</DependentUpon>
     </Content>
+    <Resource Include="Pages\Logo.png" />
+    <Resource Include="Source\Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

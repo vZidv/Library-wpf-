@@ -43,8 +43,7 @@ namespace Library__WPF_.Pages
                 table.Clear();
 
                 SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM UserTable WHERE Login = '{login_Textbox.Text}' AND Password = '{password_Textbox.Text}'", sqlConnect.sqlCon);
-                adapter.Fill(table);
-                MessageBox.Show($"{login_Textbox.Text.Length}");
+                adapter.Fill(table);              
 
                 if (table.Rows.Count > 0)
                 {

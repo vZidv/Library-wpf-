@@ -22,6 +22,7 @@ namespace Library__WPF_.Pages
     /// </summary>
     public partial class Authorization : Page
     {
+        public MainWindow autorizationWindow;
         Classes.SqlConnectClass sqlConnect = new Classes.SqlConnectClass();
         DataTable table = new DataTable();
 
@@ -49,12 +50,14 @@ namespace Library__WPF_.Pages
                 {
                     if (table.Rows[0][3].ToString() == "admin")
                     {
-                        MessageBox.Show("Вы админ!", "Победа");
+                        Windows.admin_Window admin = new Windows.admin_Window();
+                        admin.Show();                     
                     }
                     else if (table.Rows[0][3].ToString() == "user")
                     {
                         MessageBox.Show("Вы халоп!", "Проигрышь");
                     }
+                    autorizationWindow.Close();
                 }
                 else
                 {

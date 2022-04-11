@@ -24,7 +24,7 @@ namespace Library__WPF_
         {
             InitializeComponent();
 
-            MainFrame.Content = new Pages.Authorization();
+            MainFrame.Content = new Pages.Authorization() {autorizationWindow = this};
         }
 
         private void ExitBut(object sender, MouseButtonEventArgs e)

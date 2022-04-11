@@ -23,23 +23,10 @@ namespace Library__WPF_.Windows
         
         public admin_Window()
         {
-            InitializeComponent();       
+            InitializeComponent();
+            MainFrame.Content = new Pages.adminMain_Page() {admin = this};
         }
 
-        private void backToAuthorization_button_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow authorization = new MainWindow();
-            authorization.Show();
-            this.Close();
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Classes.SqlConnectClass sqlConnect = new Classes.SqlConnectClass();
-            sqlConnect.SqlConnect();
-            sqlConnect.adapter = new SqlDataAdapter("Select Login,Password,TypeUser From UserTable", sqlConnect.sqlCon);
-            sqlConnect.adapter.Fill(sqlConnect.table);
-            dataGridView_Users.ItemsSource = sqlConnect.table.DefaultView;
-        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library__WPF_.Windows"
         mc:Ignorable="d"
-        Title="admin_Window" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Админ" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#bbc9db"/>
@@ -17,7 +17,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="15" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border x:Name="border" CornerRadius="12" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -50,15 +50,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
-            <RowDefinition Height="110"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
         <Button Content="Вернуться к окну авторизации"  x:Name="backToAuthorization_button"
-                Style="{DynamicResource RoundedButton}"
-            Grid.Row="2" HorizontalAlignment="Left" Width="180" Height="80" Margin="10"/>
+                Style="{DynamicResource RoundedButton}" 
+            Grid.Row="2" HorizontalAlignment="Left" Width="250" Height="80" Margin="10" Click="backToAuthorization_button_Click"/>
         <Button Content="Обновить" Style="{DynamicResource RoundedButton}" x:Name="refresh_button"
             Grid.Row="0" HorizontalAlignment="Left" Width="180" Height="40" Margin="10"/>
         <Button Content="Добавить пользователя" Style="{DynamicResource RoundedButton}" x:Name="addPerson_button"
             Grid.Row="0" HorizontalAlignment="Right" Width="180" Height="40" Margin="10"/>
+
+        <DataGrid Grid.Row="1" Margin="5,0,5,0" BorderThickness="0"/>
     </Grid>
 </Window>

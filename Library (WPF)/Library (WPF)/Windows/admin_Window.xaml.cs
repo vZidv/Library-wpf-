@@ -23,5 +23,12 @@ namespace Library__WPF_.Windows
         {
             InitializeComponent();
         }
+
+        private void backToAuthorization_button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow authorization = new MainWindow();
+            authorization.Show();
+            this.Close();
+        }
     }
 }

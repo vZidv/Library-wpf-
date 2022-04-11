@@ -41,5 +41,11 @@ namespace Library__WPF_.Pages
             sqlConnect.adapter.Fill(sqlConnect.table);
             dataGridView_Users.ItemsSource = sqlConnect.table.DefaultView;
         }
+
+        private void addPerson_button_Click(object sender, RoutedEventArgs e)
+        {
+            admin.MainFrame.Content = new Pages.adminAddNewPerson_Page() {  admin = this.admin};
+            
+        }
     }
 }

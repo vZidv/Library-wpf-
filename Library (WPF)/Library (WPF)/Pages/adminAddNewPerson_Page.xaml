@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Library__WPF_.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="adminAddNewPerson_Page">
+      Title="adminAddNewPerson_Page" ShowsNavigationUI="False">
     <Page.Resources>
      <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="#bbc9db"/>
@@ -42,13 +42,23 @@
         <Style x:Key="TextboxStyle" TargetType="TextBox">
             <Setter Property="Background" Value="#fcf7ec"/>
             <Setter Property="Foreground" Value="DarkGray"/>
-            <Setter Property="Margin" Value="15"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Margin" Value="14"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="6"/>
                 </Style>
             </Style.Resources>
+        </Style>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#bbc9db"/>
+            <Setter Property="Margin" Value="18"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontWeight" Value="Bold"/>
         </Style>
     </Page.Resources>
     <Grid>
@@ -61,20 +71,41 @@
         <Button Content="Назад" x:Name="backToMainMenu_button" 
                 Style="{DynamicResource RoundedButton}"
             Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" 
-            Margin="0,10,10,10" Width="180" Height="40"/>
+            Margin="0,10,10,10" Width="180" Height="40" Click="backToMainMenu_button_Click"/>
 
         <Button Content="Добавить" x:Name="adminAddNewPerson_button" 
                 Style="{DynamicResource RoundedButton}"
             Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" 
-            Margin="0,10,10,10" Width="200" Height="50"/>
-
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox 
+            Margin="0,10,10,10" Width="200" Height="50" Click="adminAddNewPerson_button_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Логин"
+                    Style="{DynamicResource TextBlockStyle}"/>
+                <TextBlock Text="Пароль"
+                    Style="{DynamicResource TextBlockStyle}"/>
+                <TextBlock Text="Тип"
+                    Style="{DynamicResource TextBlockStyle}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox x:Name="login_textbox"
                 Width="250" Height="35" Style="{DynamicResource TextboxStyle}"/>
-            <TextBox 
+                <TextBox x:Name="Password_textbox"
                 Width="250" Height="35" Style="{DynamicResource TextboxStyle}"/>
-            <TextBox 
-                Width="250" Height="35" Style="{DynamicResource TextboxStyle}"/>
+                <ComboBox x:Name="TypeUser_comboBox"  FontSize="17"
+                          VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                          BorderThickness = "0" Foreground="DarkGray"
+                    Width="250" Height="35">
+                    <TextBlock Text="admin"/>
+                    <TextBlock Text="user"/>
+                    
+                    <ComboBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </ComboBox.Resources>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

@@ -15,6 +15,6 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Frame x:Name="MainFrame" />
+        <Frame x:Name="MainFrame"  NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

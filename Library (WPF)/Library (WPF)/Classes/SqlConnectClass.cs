@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Windows;
 using System.Data.SqlClient;
+using System.Windows.Controls;
+
 
 namespace Library__WPF_.Classes
 {
@@ -20,15 +23,15 @@ namespace Library__WPF_.Classes
             sqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = F:\Артём\Проекты и их материалы\Library(Wpf)\Project\Library-wpf-\Library (WPF)\Library (WPF)\Library.mdf; Integrated Security = True");
             sqlCon.Open();
         }
-        //public void LoadTable(DataGridView DataGrid, string SqlCommond)
+        //public void LoadTable(DataGrid DataGrid, string SqlCommond)
         //{
         //    table.Clear();
         //    adapter = new SqlDataAdapter(SqlCommond, sqlCon);
         //    adapter.Fill(table);
-        //    DataGrid.DataSource = table;
+            
         //    //adapter.Fill(table)
         //}
-        //public void ReloadTable(DataGridView DataGrid, string SqlCommond)
+        //public void ReloadTable(DataGrid DataGrid, string SqlCommond)
         //{
         //    table.Clear();
         //    adapter = new SqlDataAdapter(SqlCommond, sqlCon);

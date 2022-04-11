@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace Library__WPF_.Windows
 {
@@ -19,9 +20,10 @@ namespace Library__WPF_.Windows
     /// </summary>
     public partial class admin_Window : Window
     {
+        
         public admin_Window()
         {
-            InitializeComponent();
+            InitializeComponent();       
         }
 
         private void backToAuthorization_button_Click(object sender, RoutedEventArgs e)
@@ -29,6 +31,15 @@ namespace Library__WPF_.Windows
             MainWindow authorization = new MainWindow();
             authorization.Show();
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Classes.SqlConnectClass sqlConnect = new Classes.SqlConnectClass();
+            sqlConnect.SqlConnect();
+            sqlConnect.adapter = new SqlDataAdapter("Select Login,Password,TypeUser From UserTable", sqlConnect.sqlCon);
+            sqlConnect.adapter.Fill(sqlConnect.table);
+            dataGridView_Users.ItemsSource = sqlConnect.table.DefaultView;
         }
     }
 }

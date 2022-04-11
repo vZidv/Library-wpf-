@@ -119,11 +119,15 @@
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            
+
 
             <Button x:Name="authorization_Button" MinHeight="50" Width="200" MinWidth="200" Margin="0,20"
                     Content="Авторизоваться" Background="#bbc9db" IsDefault="True"
-                    Foreground="White" FontSize="17" Style="{DynamicResource RoundedButton}" Click="authorization_Button_Click"/>
+                    Foreground="White" FontSize="17" Style="{DynamicResource RoundedButton}" Click="authorization_Button_Click">
+                <Button.Effect>
+                    <DropShadowEffect Color="Black" Direction="-90" ShadowDepth="7" Opacity="0.2"/>
+                </Button.Effect>
+            </Button>
         </StackPanel>
         <StackPanel>
             <Polygon Stroke="#bbc9db" Points=" 

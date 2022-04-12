@@ -306,10 +306,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Content="Добавить" x:Name="addBook_button"
-            Height="35" Width="130" HorizontalAlignment="Right" Margin="10,0,0,0"
+            Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,10,0"
             Style="{DynamicResource RoundedButtonApp}" Click="addBook_button_Click"/>
         <Button Content="Назад" x:Name="back_button"
-            Height="35" Width="130" HorizontalAlignment="Left" Margin="0,0,10,0"
+            Height="35" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0"
             Style="{DynamicResource RoundedButtonApp}" Click="back_button_Click"/>
 
         <TextBlock Text="Добавить книгу" Style="{DynamicResource TextBlockHeaderStyle}"

@@ -80,6 +80,9 @@
     <Compile Include="Pages\addBook_Page.xaml.cs">
       <DependentUpon>addBook_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\addClient_Page.xaml.cs">
+      <DependentUpon>addClient_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\adminAddNewPerson_Page.xaml.cs">
       <DependentUpon>adminAddNewPerson_Page.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
     </Compile>
     <Compile Include="Pages\Books_Page.xaml.cs">
       <DependentUpon>Books_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\clients_Page.xaml.cs">
+      <DependentUpon>clients_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\admin_Window.xaml.cs">
       <DependentUpon>admin_Window.xaml</DependentUpon>
@@ -112,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\addClient_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\adminAddNewPerson_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Books_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\clients_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

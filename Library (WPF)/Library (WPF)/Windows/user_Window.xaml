@@ -19,10 +19,10 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button Content="Книги" x:Name="book_Menu"
-                    Style="{DynamicResource RoundedButtonForMenuApp}"
+                    Style="{DynamicResource RoundedButtonForMenuApp}" Click="book_Menu_Click"
                 />
             <Button Content="Клиенты" x:Name="clients_Menu"
-                    Style="{DynamicResource RoundedButtonForMenuApp}"
+                    Style="{DynamicResource RoundedButtonForMenuApp}" Click="clients_Menu_Click"
                 />
             <Button Content="Выдать книги" x:Name="usedBooks_Menu"
                     Style="{DynamicResource RoundedButtonForMenuApp}"

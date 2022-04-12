@@ -95,6 +95,9 @@
     <Compile Include="Pages\clients_Page.xaml.cs">
       <DependentUpon>clients_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\editClient_Page.xaml.cs">
+      <DependentUpon>editClient_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\admin_Window.xaml.cs">
       <DependentUpon>admin_Window.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\clients_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\editClient_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

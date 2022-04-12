@@ -55,7 +55,8 @@ namespace Library__WPF_.Pages
                     }
                     else if (table.Rows[0][3].ToString() == "user")
                     {
-                        MessageBox.Show("Вы халоп!", "Проигрышь");
+                        Windows.user_Window user = new Windows.user_Window();
+                        user.Show();
                     }
                     autorizationWindow.Close();
                 }

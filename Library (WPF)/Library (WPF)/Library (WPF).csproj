@@ -82,8 +82,14 @@
     <Compile Include="Pages\adminMain_Page.xaml.cs">
       <DependentUpon>adminMain_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Books_Page.xaml.cs">
+      <DependentUpon>Books_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\admin_Window.xaml.cs">
       <DependentUpon>admin_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\user_Window.xaml.cs">
+      <DependentUpon>user_Window.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -114,7 +120,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Books_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\admin_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\user_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

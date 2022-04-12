@@ -35,17 +35,59 @@ namespace Library__WPF_.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Classes.SqlConnectClass sqlConnect = new Classes.SqlConnectClass();
-            sqlConnect.SqlConnect();
-            sqlConnect.adapter = new SqlDataAdapter("Select Login,Password,TypeUser From UserTable", sqlConnect.sqlCon);
-            sqlConnect.adapter.Fill(sqlConnect.table);
-            dataGridView_Users.ItemsSource = sqlConnect.table.DefaultView;
+            LoadTable();
         }
 
         private void addPerson_button_Click(object sender, RoutedEventArgs e)
         {
             admin.MainFrame.Content = new Pages.adminAddNewPerson_Page() {  admin = this.admin};
             
+        }
+
+        private void refresh_button_Click(object sender, RoutedEventArgs e)
+        {
+            LoadTable();
+        }
+        void LoadTable()
+        {
+            Classes.SqlConnectClass sqlConnect = new Classes.SqlConnectClass();
+            sqlConnect.SqlConnect();
+            sqlConnect.adapter = new SqlDataAdapter("Select Login,Password,TypeUser From UserTable", sqlConnect.sqlCon);
+            sqlConnect.table.Clear();
+            sqlConnect.adapter.Fill(sqlConnect.table);
+            dataGridView_Users.ItemsSource = sqlConnect.table.DefaultView;
+        }
+
+        private void deletePerson_button_Click_2(object sender, RoutedEventArgs e)
+        {
+            int r = dataGridView_Users.SelectedIndex;
+
+            string login = null;
+            string password = null;
+
+            for (int i = 0; i < 2;)
+            {
+                switch (i)
+                {
+                    case 0:
+                        TextBlock itemL = dataGridView_Users.Columns[i].GetCellContent(dataGridView_Users.Items[r]) as TextBlock;
+                         login = itemL.Text;
+                        break;
+                    case 1:
+                        TextBlock itemP = dataGridView_Users.Columns[i].GetCellContent(dataGridView_Users.Items[r]) as TextBlock;
+                         password = itemP.Text;
+                        break;            
+                }
+                i++;           
+            }
+
+            Classes.SqlConnectClass sqlConnect = new Classes.SqlConnectClass();
+            sqlConnect.SqlConnect();
+
+            SqlCommand command = new SqlCommand($"DELETE FROM UserTable WHERE Login = '{login}' AND Password = '{password}'", sqlConnect.sqlCon);
+            command.ExecuteNonQuery();
+
+            MessageBox.Show("Пользователь удалён!");
         }
     }
 }

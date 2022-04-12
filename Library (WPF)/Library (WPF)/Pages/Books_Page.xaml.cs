@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace Library__WPF_.Pages
 {
@@ -36,6 +37,38 @@ namespace Library__WPF_.Pages
         private void addBook_button_Click(object sender, RoutedEventArgs e)
         {
             user.userMainFrame.Content = new Pages.addBook_Page() {user = this.user};
+        }
+
+        private void deleteBooks_button_Click(object sender, RoutedEventArgs e)
+        {
+            int r = books_Dg.SelectedIndex;
+
+            string author = null;
+            string nameBook = null;
+
+            for (int i = 0; i < 2;)
+            {
+                switch (i)
+                {
+                    case 0:
+                        TextBlock itemL = books_Dg.Columns[i].GetCellContent(books_Dg.Items[r]) as TextBlock;
+                        nameBook = itemL.Text;
+                        break;
+                    case 1:
+                        TextBlock itemP = books_Dg.Columns[i].GetCellContent(books_Dg.Items[r]) as TextBlock;
+                        author = itemP.Text;
+                        break;
+                }
+                i++;
+            }
+            MessageBox.Show($"{nameBook} {author}");
+
+            connectClass.SqlConnect();
+
+            SqlCommand command = new SqlCommand($"DELETE FROM [Books] WHERE NameBook = N'{nameBook}' AND Autor = N'{author}'", connectClass.sqlCon);
+            command.ExecuteNonQuery();
+
+            MessageBox.Show("Книга удалёна!");
         }
     }
 }

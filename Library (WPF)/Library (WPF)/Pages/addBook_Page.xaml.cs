@@ -35,6 +35,7 @@ namespace Library__WPF_.Pages
         private void addBook_button_Click(object sender, RoutedEventArgs e)
         {
             Classes.SqlConnectClass connectClass = new Classes.SqlConnectClass();
+            connectClass.SqlConnect();
 
             SqlCommand command = new SqlCommand("INSERT INTO Books (NameBook,Autor,Genre,NumberOfBooks) VALUES (@NameBook,@Autor,@Genre,@NumberOfBooks)", connectClass.sqlCon);
 

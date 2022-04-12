@@ -22,6 +22,17 @@ namespace Library__WPF_.Windows
         public user_Window()
         {
             InitializeComponent();
+           
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            userMainFrame.Content = new Pages.Books_Page() { user = this };
+        }
+
+        private void userMainFrame_FragmentNavigation(object sender, System.Windows.Navigation.FragmentNavigationEventArgs e)
+        {
+
         }
     }
 }

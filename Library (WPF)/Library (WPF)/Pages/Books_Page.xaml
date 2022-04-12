@@ -5,8 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Library__WPF_.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="420" d:DesignWidth="800"
       Title="Books_Page">
+    <Page.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFD5BA8C" Offset="0.918"/>
+            <GradientStop Color="#FFF1EADD" Offset="0.133"/>
+            <GradientStop Color="White" Offset="0"/>
+        </LinearGradientBrush>
+    </Page.Background>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,13 +22,27 @@
         </Grid.RowDefinitions>
         <Button Content="Добавить" x:Name="addBook_button"
             Height="35" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0"
-            Style="{DynamicResource RoundedButtonApp}"/>
+            Style="{DynamicResource RoundedButtonApp}" Click="addBook_button_Click"/>
         <Button Content="Обновить" x:Name="refresh_button"
             Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,10,0"
-            Style="{DynamicResource RoundedButtonApp}"/>
+            Style="{DynamicResource RoundedButtonApp}" Click="refresh_button_Click"/>
 
-        <DataGrid Grid.Row="1" Margin="7,0,7,10">
+        <DataGrid x:Name="books_Dg"
+            Grid.Row="1" Margin="7,0,7,10" AutoGenerateColumns="False" BorderThickness = "0" IsReadOnly="True">
+            <DataGrid.Columns>
+             <DataGridTextColumn Binding="{Binding NameBook}" Header="Название книги" MinWidth="120" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Autor}" Header="Автор" MinWidth="120" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Genre}" Header="Жанр" MinWidth="120" Width="*"/>
+                <DataGridTextColumn Binding="{Binding NumberOfBooks}" Header="Количество" MinWidth="120" Width="*"/>
+                <DataGridTemplateColumn Header="Удалить" MinWidth="120" Width="*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Content="Удалить" x:Name="deletePerson_button" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
             
+             </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Page>

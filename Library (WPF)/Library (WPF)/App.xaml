@@ -67,5 +67,37 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="TextBlockHeaderStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#bbc9db"/>
+            <Setter Property="Margin" Value="18"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            
+        </Style>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="18"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TextboxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="#fcf7ec"/>
+            <Setter Property="Foreground" Value="DarkGray"/>
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Margin" Value="14"/>
+            <Setter Property="BorderBrush" Value="#bbc9db"/>
+            <Setter Property="BorderThickness" Value="2.5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
     </Application.Resources>
 </Application>

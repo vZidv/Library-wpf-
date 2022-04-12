@@ -23,20 +23,14 @@ namespace Library__WPF_.Classes
             sqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = F:\Артём\Проекты и их материалы\Library(Wpf)\Project\Library-wpf-\Library (WPF)\Library (WPF)\Library.mdf; Integrated Security = True");
             sqlCon.Open();
         }
-        //public void LoadTable(DataGrid DataGrid, string SqlCommond)
-        //{
-        //    table.Clear();
-        //    adapter = new SqlDataAdapter(SqlCommond, sqlCon);
-        //    adapter.Fill(table);
-            
-        //    //adapter.Fill(table)
-        //}
-        //public void ReloadTable(DataGrid DataGrid, string SqlCommond)
-        //{
-        //    table.Clear();
-        //    adapter = new SqlDataAdapter(SqlCommond, sqlCon);
-        //    adapter.Fill(table);
-        //    DataGrid.DataSource = table;
-        //}
+        public void LoadTable(string command,DataGrid dataGrid)
+        {
+
+                SqlConnect();
+                adapter = new SqlDataAdapter(command, sqlCon);
+                table.Clear();
+                adapter.Fill(table);
+                dataGrid.ItemsSource = table.DefaultView;
+        }
     }
 }

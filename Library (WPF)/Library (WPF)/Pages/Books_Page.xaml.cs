@@ -20,9 +20,22 @@ namespace Library__WPF_.Pages
     /// </summary>
     public partial class Books_Page : Page
     {
+        public Windows.user_Window user = new Windows.user_Window();
+        Classes.SqlConnectClass connectClass = new Classes.SqlConnectClass();
         public Books_Page()
         {
             InitializeComponent();
+            connectClass.LoadTable("Select NameBook,Autor,Genre,NumberOfBooks From Books ", books_Dg);
+        }
+
+        private void refresh_button_Click(object sender, RoutedEventArgs e)
+        {
+            connectClass.LoadTable("Select NameBook,Autor,Genre,NumberOfBooks From Books ", books_Dg);
+        }
+
+        private void addBook_button_Click(object sender, RoutedEventArgs e)
+        {
+            user.userMainFrame.Content = new Pages.addBook_Page() {user = this.user};
         }
     }
 }

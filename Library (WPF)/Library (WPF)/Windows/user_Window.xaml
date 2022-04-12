@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library__WPF_.Windows"
         mc:Ignorable="d"
-        Title="user_Window" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Library helper" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFF1EADD" Offset="0.164"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -28,6 +34,7 @@
                     Style="{DynamicResource RoundedButtonForMenuApp}"
                 />
         </StackPanel>
-        <Frame Grid.Row="1"/>
+        <Frame x:Name="userMainFrame"
+            Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

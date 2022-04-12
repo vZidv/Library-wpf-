@@ -92,7 +92,7 @@
                 Width="250" Height="35" Style="{DynamicResource TextboxStyle}"/>
                 <TextBox x:Name="Password_textbox"
                 Width="250" Height="35" Style="{DynamicResource TextboxStyle}"/>
-                <ComboBox x:Name="TypeUser_comboBox"  FontSize="17"
+                <ComboBox x:Name="TypeUser_comboBox"  FontSize="20"
                           VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                           BorderThickness = "0" Foreground="DarkGray"
                     Width="250" Height="35">

@@ -49,7 +49,10 @@ namespace Library__WPF_.Pages
 
                     SqlCommand command = new SqlCommand("INSERT INTO OverdueBooks (LastDate,Client,NumberOfPhone,BookName,Autor) " +
                         "VALUES (@LastDate,@Client,@NumberOfPhone,@BookName,@Autor)", connectClass.sqlCon);
-                    command.Parameters.AddWithValue("LastDate", table.Rows[i][2]);
+
+                    DateTime dateTime = new DateTime();
+                    dateTime = Convert.ToDateTime( table.Rows[i][2]);
+                    command.Parameters.AddWithValue("LastDate", dateTime);
                     command.Parameters.AddWithValue("Client", table.Rows[i][5]);
                     command.Parameters.AddWithValue("NumberOfPhone", numberOfPhone);
                     command.Parameters.AddWithValue("BookName", table.Rows[i][3]);
@@ -67,6 +70,84 @@ namespace Library__WPF_.Pages
             CheckLostBook();
             connectClass.LoadTable("SELECT OverdueBooks.LastDate,ClientsProf.NameClient +' '+ ClientsProf.Surname +' '+ ClientsProf.Patronymic [Client],OverdueBooks.NumberOfPhone,OverdueBooks.BookName,OverdueBooks.Autor " +
                 "FROM OverdueBooks INNER JOIN ClientsProf ON ClientsProf.id = OverdueBooks.Client", overdueBooks_Dg);
+        }
+
+        private void descriptionBooks_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void descriptionOverdueBooks_button_Click(object sender, RoutedEventArgs e)
+        {
+            int r = overdueBooks_Dg.SelectedIndex;
+
+            string clientFullName = null;
+
+            
+            string nameBook = null;
+            string author = null;
+            int idClient = 0;
+
+            TextBlock itemL = overdueBooks_Dg.Columns[1].GetCellContent(overdueBooks_Dg.Items[r]) as TextBlock;
+            clientFullName = itemL.Text;
+
+            for (int i = 0; i < 5;)
+            {
+                switch (i)
+                {
+                    
+                    case 3:
+                        TextBlock itemP = overdueBooks_Dg.Columns[i].GetCellContent(overdueBooks_Dg.Items[r]) as TextBlock;
+                        nameBook = itemP.Text;
+                        break;
+                    case 4:
+                        TextBlock itemG = overdueBooks_Dg.Columns[i].GetCellContent(overdueBooks_Dg.Items[r]) as TextBlock;
+                        author = itemG.Text;
+                        break;
+                }
+                i++;
+            }
+
+            
+            connectClass.SqlConnect();
+            
+            SqlDataAdapter adapter = new SqlDataAdapter($"Select Client from OverdueBooks where BookName = N'{nameBook}' and Autor = N'{author}'", connectClass.sqlCon);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            
+
+            if (table.Rows.Count > 1)
+            {
+
+                for (int i = 0; i < table.Rows.Count;)
+                {
+                    SqlDataAdapter adapter1 = new SqlDataAdapter($"Select NameClient,Surname,Patronymic From ClientsProf Where id = '{Convert.ToInt32(table.Rows[i][0])}'", connectClass.sqlCon);
+                    DataTable newTable = new DataTable();
+                    adapter1.Fill(newTable);
+
+                    string FullnameClient = $"{Convert.ToString(newTable.Rows[0][0])} {Convert.ToString(newTable.Rows[0][1])} {Convert.ToString(newTable.Rows[0][2])}";
+                    if (FullnameClient == clientFullName)
+                    {
+                        idClient = Convert.ToInt32(table.Rows[i][0]);
+                        enterToDescription();
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+            }
+            else
+            {
+                enterToDescription();
+            }
+            void enterToDescription()
+            {
+                connectClass.SqlConnect();
+                SqlCommand command = new SqlCommand($"Select id From OverdueBooks WHERE BookName = N'{nameBook}' And Autor = N'{author}' And Client ='{idClient}'", connectClass.sqlCon);
+                user.userMainFrame.Content = new Pages.decriptionOverdueBook_Page() { user = this.user, idOverdue = Convert.ToInt32(command.ExecuteScalar()) };
+            }
         }
     }
 }

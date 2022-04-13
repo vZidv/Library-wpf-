@@ -98,6 +98,9 @@
     <Compile Include="Pages\clients_Page.xaml.cs">
       <DependentUpon>clients_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\decriptionOverdueBook_Page.xaml.cs">
+      <DependentUpon>decriptionOverdueBook_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\discriptionGriveBook.xaml.cs">
       <DependentUpon>discriptionGriveBook.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\clients_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\decriptionOverdueBook_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

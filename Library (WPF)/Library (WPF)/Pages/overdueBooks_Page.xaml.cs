@@ -140,12 +140,18 @@ namespace Library__WPF_.Pages
             }
             else
             {
-                enterToDescription();
+                enterToDescriptionClientNull();
             }
             void enterToDescription()
             {
                 connectClass.SqlConnect();
                 SqlCommand command = new SqlCommand($"Select id From OverdueBooks WHERE BookName = N'{nameBook}' And Autor = N'{author}' And Client ='{idClient}'", connectClass.sqlCon);
+                user.userMainFrame.Content = new Pages.decriptionOverdueBook_Page() { user = this.user, idOverdue = Convert.ToInt32(command.ExecuteScalar()) };
+            }
+            void enterToDescriptionClientNull()
+            {
+                connectClass.SqlConnect();
+                SqlCommand command = new SqlCommand($"Select id From OverdueBooks WHERE BookName = N'{nameBook}' And Autor = N'{author}'", connectClass.sqlCon);
                 user.userMainFrame.Content = new Pages.decriptionOverdueBook_Page() { user = this.user, idOverdue = Convert.ToInt32(command.ExecuteScalar()) };
             }
         }

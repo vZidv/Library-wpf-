@@ -25,6 +25,7 @@ namespace Library__WPF_.Pages
         public Windows.user_Window user = new Windows.user_Window();
 
         public int idOverdue;
+        private int idClient;
         public decriptionOverdueBook_Page()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace Library__WPF_.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             connectClass.SqlConnect();
-            SqlDataAdapter adapterForIssuedBooks = new SqlDataAdapter($"Select OverdueBooks.LastDate,ClientsProf.NameClient,ClientsProf.Surname,ClientsProf.Patronymic,OverdueBooks.NumberOfPhone,OverdueBooks.BookName,OverdueBooks.Autor " +
+            SqlDataAdapter adapterForIssuedBooks = new SqlDataAdapter($"Select OverdueBooks.LastDate,ClientsProf.NameClient,ClientsProf.Surname,ClientsProf.Patronymic,OverdueBooks.NumberOfPhone,OverdueBooks.BookName,OverdueBooks.Autor,ClientsProf.id " +
                 $"From OverdueBooks INNER JOIN ClientsProf ON ClientsProf.id = OverdueBooks.Client WHERE OverdueBooks.id = '{idOverdue}'", connectClass.sqlCon);
             DataTable table = new DataTable();
             adapterForIssuedBooks.Fill(table);
@@ -44,10 +45,31 @@ namespace Library__WPF_.Pages
             nameBook_textbox.Text = Convert.ToString(table.Rows[0][5]);
             authorBook_textbox.Text = Convert.ToString(table.Rows[0][6]);
 
+            idClient = Convert.ToInt32(table.Rows[0][7]);
+
             nameClient_textBox.Text = Convert.ToString(table.Rows[0][1]);
             secondNameClient_textBox.Text = Convert.ToString(table.Rows[0][2]);
             patronymicClient_textBox.Text = Convert.ToString(table.Rows[0][3]);
             phoneNumberClient_textBox.Text = Convert.ToString(table.Rows[0][4]);
+
+            var date = (DateTime.Now - Convert.ToDateTime( lastDate_datePecker.Text)).Days;
+            daysOverdueBook_textbox.Text =Convert.ToString( date);
+            penalty_textbox.Text = Convert.ToString(Convert.ToInt32(daysOverdueBook_textbox.Text) * 10);
+        }
+
+        private void back_button_Click(object sender, RoutedEventArgs e)
+        {
+            user.userMainFrame.Content = new Pages.overdueBooks_Page() { user = this.user };
+        }
+
+        private void pay_button_Click(object sender, RoutedEventArgs e)
+        {
+            SqlCommand command = new SqlCommand($"DELETE FROM OverdueBooks WHERE id ='{idOverdue}'", connectClass.sqlCon);
+            command.ExecuteNonQuery();
+            connectClass.AddInHistory(nameBook_textbox.Text, authorBook_textbox.Text, idClient, "Оплачен");
+            MessageBox.Show("Штраф оплачен!","Сообщение");
+
+            user.userMainFrame.Content = new Pages.overdueBooks_Page() { user = this.user };
         }
     }
 }

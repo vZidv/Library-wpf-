@@ -182,16 +182,13 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Content="Оплатить" x:Name="updateDate_button"
+        <Button Content="Оплатить" x:Name="pay_button"
             Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,10,0"
-            Style="{DynamicResource RoundedButtonApp}" />
-        <Button Content="Вернуть" x:Name="returnBook_button"
-            Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,150,0"
-            Style="{DynamicResource RoundedButtonApp}" />
+            Style="{DynamicResource RoundedButtonApp}" Click="pay_button_Click" />
 
         <Button Content="Назад" x:Name="back_button"
             Height="35" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0"
-            Style="{DynamicResource RoundedButtonApp}"  />
+            Style="{DynamicResource RoundedButtonApp}" Click="back_button_Click"  />
 
         <TextBlock Text="Выданная книга" Style="{DynamicResource TextBlockHeaderStyle}"
                    Grid.Row="1" Margin="15,5,0,5"/>

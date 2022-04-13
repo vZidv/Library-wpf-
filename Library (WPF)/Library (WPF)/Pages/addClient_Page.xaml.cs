@@ -23,12 +23,11 @@ namespace Library__WPF_.Pages
     {
         public Windows.user_Window user = new Windows.user_Window();
         Classes.SqlConnectClass connectClass = new Classes.SqlConnectClass();
-        public int id;
+
 
         public addClient_Page()
         {
             InitializeComponent();
-            MessageBox.Show($"{id}");
         }
 
         private void back_button_Click(object sender, RoutedEventArgs e)
@@ -55,6 +54,11 @@ namespace Library__WPF_.Pages
             com.ExecuteNonQuery();
 
             MessageBox.Show("Клиент добавлен!", "Сообщение");
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

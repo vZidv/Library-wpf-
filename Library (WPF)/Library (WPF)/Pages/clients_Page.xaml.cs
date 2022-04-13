@@ -78,7 +78,7 @@ namespace Library__WPF_.Pages
 
              int id = (int)(command.ExecuteScalar());
 
-            user.userMainFrame.Content = new Pages.addClient_Page() { id = id };
+            user.userMainFrame.Content = new Pages.editClient_Page() { id = id };
         }
     }
 }

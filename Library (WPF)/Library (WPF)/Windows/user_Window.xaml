@@ -27,8 +27,8 @@
             <Button Content="Выдать книги" x:Name="usedBooks_Menu"
                     Style="{DynamicResource RoundedButtonForMenuApp}" Click="usedBooks_Menu_Click"
                 />
-            <Button Content="История" x:Name="History_Menu"
-                    Style="{DynamicResource RoundedButtonForMenuApp}"
+            <Button Content="История" x:Name="history_Menu"
+                    Style="{DynamicResource RoundedButtonForMenuApp}" Click="history_Menu_Click"
                 />
             <Button Content="Просроченные" x:Name="overdue_Menu"
                     Style="{DynamicResource RoundedButtonForMenuApp}"

@@ -184,7 +184,7 @@
         </Grid.RowDefinitions>
         <Button Content="Продлить" x:Name="updateDate_button"
             Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,10,0"
-            Style="{DynamicResource RoundedButtonApp}" />
+            Style="{DynamicResource RoundedButtonApp}" Click="updateDate_button_Click" />
         <Button Content="Вернуть" x:Name="returnBook_button"
             Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,150,0"
             Style="{DynamicResource RoundedButtonApp}" Click="returnBook_button_Click" />

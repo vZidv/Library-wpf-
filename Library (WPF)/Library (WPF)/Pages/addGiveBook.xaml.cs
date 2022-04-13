@@ -160,9 +160,9 @@ namespace Library__WPF_.Pages
                 command.Parameters.AddWithValue("Client", idClient);
                 command.ExecuteNonQuery();
 
+                connectClass.AddInHistory(nameBook,author, idClient, "Выдана");
             }
             MessageBox.Show("Книги выданы!", "Сообщение");
-
 
         }
     }

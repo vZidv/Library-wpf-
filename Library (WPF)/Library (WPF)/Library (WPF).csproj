@@ -107,6 +107,9 @@
     <Compile Include="Pages\giveBook_Page.xaml.cs">
       <DependentUpon>giveBook_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\histore_Page.xaml.cs">
+      <DependentUpon>histore_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\admin_Window.xaml.cs">
       <DependentUpon>admin_Window.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\giveBook_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\histore_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

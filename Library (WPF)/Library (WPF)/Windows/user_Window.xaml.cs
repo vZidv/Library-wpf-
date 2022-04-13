@@ -49,5 +49,10 @@ namespace Library__WPF_.Windows
         {
             userMainFrame.Content = new Pages.giveBook_Page() { user = this };
         }
+
+        private void history_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            userMainFrame.Content = new Pages.histore_Page() { user = this };
+        }
     }
 }

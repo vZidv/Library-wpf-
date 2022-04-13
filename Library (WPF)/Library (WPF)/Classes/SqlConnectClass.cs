@@ -31,5 +31,21 @@ namespace Library__WPF_.Classes
                 adapter.Fill(table);
                 dataGrid.ItemsSource = table.DefaultView;
         }
+        public void AddInHistory(String NameBook, String Author, int idClient, String Action)
+        {
+            SqlCommand command = new SqlCommand("INSERT INTO HistoryAction (DateAction,NameBook,Autor,Client,Status) " +
+                "VALUES (@DateAction,@NameBook,@Autor,@Client,@Status)", sqlCon);
+            DateTime date = DateTime.Now;
+            date.ToString("dd MM yyyy");
+
+            command.Parameters.AddWithValue("DateAction", date);
+            command.Parameters.AddWithValue("NameBook", NameBook);
+            command.Parameters.AddWithValue("Autor", Author);
+            command.Parameters.AddWithValue("Client", idClient);
+            command.Parameters.AddWithValue("Status", Action);
+
+            command.ExecuteNonQuery();
+
+        }
     }
 }

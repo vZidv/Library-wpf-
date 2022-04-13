@@ -47,6 +47,7 @@ namespace Library__WPF_.Pages
             command.ExecuteNonQuery();
 
             MessageBox.Show("Книга добавлена!");
+
         }
     }
 }

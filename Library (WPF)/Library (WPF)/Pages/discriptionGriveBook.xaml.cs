@@ -49,7 +49,6 @@ namespace Library__WPF_.Pages
             secondNameClient_textBox.Text = Convert.ToString(table.Rows[0][6]);
             patronymicClient_textBox.Text = Convert.ToString(table.Rows[0][7]);
             phoneNumberClient_textBox.Text = Convert.ToString(table.Rows[0][8]);
-
         }
 
         private void returnBook_button_Click(object sender, RoutedEventArgs e)
@@ -61,6 +60,27 @@ namespace Library__WPF_.Pages
             command.ExecuteNonQuery();
 
             user.userMainFrame.Content = new Pages.giveBook_Page() { user = this.user };
+            connectClass.AddInHistory(nameBook_textbox.Text, authorBook_textbox.Text, idClient, "Возврат");
+        }
+
+        private void updateDate_button_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime lastDate = Convert.ToDateTime(lastDate_datePecker.Text);
+            lastDate += new TimeSpan(days: 30, hours: 0, minutes: 0, seconds: 0);
+            lastDate.ToString("yyyy MM dd");
+            string date = Convert.ToString(lastDate);
+            date = DateTime.Parse(date).ToShortDateString();
+            lastDate = Convert.ToDateTime(DateTime.Parse(Convert.ToString(lastDate)).ToShortDateString());
+
+            SqlCommand command = new SqlCommand($"UPDATE IssuedBooks SET LastDate =@LastDate WHERE Client = '{idClient}' And NameBook= N'{nameBook_textbox.Text}'", connectClass.sqlCon);
+
+            command.Parameters.Add("LastDate", lastDate);
+
+            command.ExecuteNonQuery();
+
+            connectClass.AddInHistory(nameBook_textbox.Text, authorBook_textbox.Text, idClient, "Продлена");
+
+            MessageBox.Show($"Книга продлена! до {date}", "Сообщение");
         }
     }
 }

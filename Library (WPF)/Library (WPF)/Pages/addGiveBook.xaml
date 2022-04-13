@@ -27,9 +27,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="Выдать" x:Name="addBook_button" Grid.Column="1"
+        <Button Content="Выдать" x:Name="addGiveBook_button" Grid.Column="1"
             Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,10,0"
-            Style="{DynamicResource RoundedButtonApp}"/>
+            Style="{DynamicResource RoundedButtonApp}" Click="addGiveBook_button_Click"/>
         <Button Content="Назад" x:Name="back_button"
             Height="35" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0"
             Style="{DynamicResource RoundedButtonApp}" Click="back_button_Click"/>
@@ -86,7 +86,7 @@
                     <DataGridTemplateColumn Header="Добавить" MinWidth="70" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Добавить" x:Name="chooseBook_button"/>
+                                <Button Content="Добавить" x:Name="chooseBook_button" Click="chooseBook_button_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

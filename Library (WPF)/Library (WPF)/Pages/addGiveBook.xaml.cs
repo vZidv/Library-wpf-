@@ -24,6 +24,9 @@ namespace Library__WPF_.Pages
         Classes.SqlConnectClass connectClass = new Classes.SqlConnectClass();
         public Windows.user_Window user = new Windows.user_Window();
 
+        private int idClient;
+
+        DataTable tableBooks = new DataTable();
         public addGiveBook()
         {
             InitializeComponent();
@@ -78,7 +81,89 @@ namespace Library__WPF_.Pages
                 }
                 i++;
             }
+            connectClass.SqlConnect();
+            SqlCommand command = new SqlCommand($"Select id From ClientsProf WHERE NameClient = N'{name}' AND Surname = N'{secondName}' AND Patronymic = N'{patronymic}'", connectClass.sqlCon);
+            idClient = (int)command.ExecuteScalar();
+
             fullNameClient_textBox.Text = name + " " + secondName + " " + patronymic;
+        }
+
+        private void chooseBook_button_Click(object sender, RoutedEventArgs e)
+        {
+            int r = books_Dg.SelectedIndex;
+
+            string nameBook = null;
+            string author = null;
+
+            for (int i = 0; i < 3;)
+            {
+                switch (i)
+                {
+                    case 0:
+                        TextBlock itemL = books_Dg.Columns[i].GetCellContent(books_Dg.Items[r]) as TextBlock;
+                        nameBook = itemL.Text;
+                        break;
+                    case 1:
+                        TextBlock itemP = books_Dg.Columns[i].GetCellContent(books_Dg.Items[r]) as TextBlock;
+                        author = itemP.Text;
+                        break;
+
+                }
+                i++;  
+            }
+
+
+            SqlDataAdapter adapter = new SqlDataAdapter($"SELECT NameBook,Autor FROM Books WHERE NameBook = N'{nameBook}' AND Autor = N'{author}'", connectClass.sqlCon);
+
+            adapter.Fill(tableBooks);
+            giveBooks_Dg.ItemsSource = tableBooks.DefaultView;
+        }
+
+        private void addGiveBook_button_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime date = DateTime.Now;
+            date.ToString("dd MMMM yyyy");
+            DateTime LastDat = date + new TimeSpan(days: 30, hours: 0, minutes: 0, seconds: 0);
+            LastDat.ToString("dd MMMM yyyy");
+            connectClass.SqlConnect();
+
+            for (int i = 0; i < giveBooks_Dg.Items.Count; i++)
+            {
+                SqlCommand command = new SqlCommand("INSERT INTO [IssuedBooks] (GiveData,LastDate,NameBook,Autor,Client) " +
+                "VALUES (@GiveData,@LastDate,@NameBook,@Autor,@Client)", connectClass.sqlCon);
+
+                string nameBook = null;
+                string author = null;
+
+                for (int j = 0; j < giveBooks_Dg.Columns.Count;)
+                {
+                    switch (j)
+                    {
+                        case 0:
+                            TextBlock itemL = books_Dg.Columns[j].GetCellContent(books_Dg.Items[i]) as TextBlock;
+                            nameBook = itemL.Text;
+                            break;
+                        case 1:
+                            TextBlock itemP = books_Dg.Columns[j].GetCellContent(books_Dg.Items[i]) as TextBlock;
+                            author = itemP.Text;
+                            break;
+
+                    }
+                    j++;
+                }
+
+
+                command.Parameters.AddWithValue("GiveData", date);
+                command.Parameters.AddWithValue("LastDate", LastDat);
+                command.Parameters.AddWithValue("NameBook", nameBook);
+                command.Parameters.AddWithValue("Autor", author);
+                command.Parameters.AddWithValue("Client", idClient);
+                command.ExecuteNonQuery();
+
+            }
+            MessageBox.Show("Книги выданы!", "Сообщение");
+
+
         }
     }
 }

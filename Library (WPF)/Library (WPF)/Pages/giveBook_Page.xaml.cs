@@ -27,16 +27,21 @@ namespace Library__WPF_.Pages
         public giveBook_Page()
         {
             InitializeComponent();
+
+            
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            (giveBooks_Dg.Columns[0] as DataGridTextColumn).Binding.StringFormat = "dd.MM.yyyy";
+
             connectClass.LoadTable("SELECT IssuedBooks.LastDate, IssuedBooks.NameBook, IssuedBooks.Autor, ClientsProf.NameClient + ' ' + ClientsProf.Surname + ' ' + ClientsProf.Patronymic[Client]" +
                 "FROM IssuedBooks INNER JOIN ClientsProf ON ClientsProf.id = IssuedBooks.Client", giveBooks_Dg);
         }
 
         private void refresh_button_Click(object sender, RoutedEventArgs e)
         {
+
             connectClass.LoadTable("SELECT IssuedBooks.LastDate, IssuedBooks.NameBook, IssuedBooks.Autor, ClientsProf.NameClient + ' ' + ClientsProf.Surname + ' ' + ClientsProf.Patronymic[Client]" +
               "FROM IssuedBooks INNER JOIN ClientsProf ON ClientsProf.id = IssuedBooks.Client", giveBooks_Dg);
         }

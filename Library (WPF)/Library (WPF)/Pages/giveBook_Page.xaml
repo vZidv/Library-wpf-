@@ -38,7 +38,7 @@
                 <DataGridTemplateColumn Header="Подробнее" MinWidth="120" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Подробнее" x:Name="descriptionClient_button" />
+                            <Button Content="Подробнее" x:Name="descriptionUseBook_button" Click="descriptionUseBook_button_Click" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

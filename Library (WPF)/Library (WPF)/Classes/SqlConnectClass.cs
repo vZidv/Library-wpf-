@@ -25,10 +25,9 @@ namespace Library__WPF_.Classes
         }
         public void LoadTable(string command,DataGrid dataGrid)
         {
-
-                SqlConnect();
-                adapter = new SqlDataAdapter(command, sqlCon);
-                table.Clear();
+            table.Clear();
+            SqlConnect();
+                adapter = new SqlDataAdapter(command, sqlCon);   
                 adapter.Fill(table);
                 dataGrid.ItemsSource = table.DefaultView;
         }

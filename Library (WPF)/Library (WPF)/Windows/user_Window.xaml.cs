@@ -44,5 +44,10 @@ namespace Library__WPF_.Windows
         {
             userMainFrame.Content = new Pages.Books_Page() { user = this};
         }
+
+        private void usedBooks_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            userMainFrame.Content = new Pages.giveBook_Page() { user = this };
+        }
     }
 }

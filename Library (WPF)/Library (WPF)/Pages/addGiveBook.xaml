@@ -1,0 +1,117 @@
+﻿<Page x:Class="Library__WPF_.Pages.addGiveBook"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Library__WPF_.Pages"
+      mc:Ignorable="d" 
+    d:DesignHeight="420" d:DesignWidth="800"
+      Title="addGiveBook" ShowsNavigationUI="False" Loaded="Page_Loaded">
+    
+
+    <Page.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFD5BA8C" Offset="0.918"/>
+            <GradientStop Color="#FFF1EADD" Offset="0.133"/>
+            <GradientStop Color="White" Offset="0"/>
+        </LinearGradientBrush>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition MinHeight="100"  Height="*"/>
+            <RowDefinition MinHeight="100"  Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Выдать" x:Name="addBook_button" Grid.Column="1"
+            Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,10,0"
+            Style="{DynamicResource RoundedButtonApp}"/>
+        <Button Content="Назад" x:Name="back_button"
+            Height="35" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0"
+            Style="{DynamicResource RoundedButtonApp}" Click="back_button_Click"/>
+
+        <TextBlock Text="Выдать книгу" Style="{DynamicResource TextBlockHeaderStyle}" FontSize="35" Grid.ColumnSpan ="2"
+                   Grid.Row="0" Margin="15,5,0,5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Ф.И.О" FontSize="25" Margin="16"
+                          Style="{DynamicResource TextBlockStyle}"/>
+                <TextBlock Text="Задолжности" FontSize="25" Margin="16"
+                          Style="{DynamicResource TextBlockStyle}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="fullNameClient_textBox"
+                    Width="170" Height="35"
+                    Style="{DynamicResource TextboxStyle}"/>
+                <TextBox x:Name="authorBook_textBox"
+                    Style="{DynamicResource TextboxStyle}"  Height="35"/>
+                
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Grid.Column="0"
+            Grid.Row="1" Orientation="Vertical">
+            <TextBlock Text="Клиенты" FontSize="18" VerticalAlignment="Top" Margin="10,10,0,0"
+                Style="{DynamicResource TextBlockHeaderStyle}"/>
+            <DataGrid x:Name="clients_Dg"   AutoGenerateColumns="False" BorderThickness = "0" IsReadOnly="True">
+            <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding NameClient}" Header="Имя" MinWidth="70" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Surname}" Header="Фамилия" MinWidth="70" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество" MinWidth="70" Width="*"/>
+                    <DataGridTemplateColumn Header="Выбрать" MinWidth="70" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                                <Button Content="Выбрать" x:Name="chooseClient_button" Click="chooseClient_button_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Column="0"
+            Grid.Row="2" Orientation="Vertical">
+            <TextBlock Text="Книги" FontSize="18" VerticalAlignment="Top" Margin="10,10,0,0"
+                Style="{DynamicResource TextBlockHeaderStyle}"/>
+            <DataGrid x:Name="books_Dg"   AutoGenerateColumns="False" BorderThickness = "0" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding NameBook}" Header="Название книги" MinWidth="70" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Autor}" Header="Автор" MinWidth="70" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Genre}" Header="Жанр" MinWidth="70" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding NumberOfBooks}" Header="Количество" MinWidth="70" Width="*"/>
+                    <DataGridTemplateColumn Header="Добавить" MinWidth="70" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Добавить" x:Name="chooseBook_button"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Книги к выдаче" FontSize="18" VerticalAlignment="Top" Margin="10,10,0,0"
+                Style="{DynamicResource TextBlockHeaderStyle}"/>
+        <DataGrid x:Name="giveBooks_Dg" Margin="5,0,0,0"    
+                  AutoGenerateColumns="False" BorderThickness = "0" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding NameBook}" Header="Название книги" MinWidth="40" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Autor}" Header="Автор" MinWidth="40" Width="*"/>
+                <DataGridTemplateColumn Header="Удалить" MinWidth="40" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Удалить"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+    </Grid>
+
+</Page>

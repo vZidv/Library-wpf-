@@ -25,7 +25,7 @@
                     Style="{DynamicResource RoundedButtonForMenuApp}" Click="clients_Menu_Click"
                 />
             <Button Content="Выдать книги" x:Name="usedBooks_Menu"
-                    Style="{DynamicResource RoundedButtonForMenuApp}"
+                    Style="{DynamicResource RoundedButtonForMenuApp}" Click="usedBooks_Menu_Click"
                 />
             <Button Content="История" x:Name="History_Menu"
                     Style="{DynamicResource RoundedButtonForMenuApp}"

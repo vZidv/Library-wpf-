@@ -30,6 +30,8 @@ namespace Library__WPF_.Pages
         public discriptionGriveBook()
         {
             InitializeComponent();
+
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -81,6 +83,11 @@ namespace Library__WPF_.Pages
             connectClass.AddInHistory(nameBook_textbox.Text, authorBook_textbox.Text, idClient, "Продлена");
 
             MessageBox.Show($"Книга продлена! до {date}", "Сообщение");
+        }
+
+        private void back_button_Click(object sender, RoutedEventArgs e)
+        {
+            user.userMainFrame.Content = new Pages.giveBook_Page() { user = this.user };
         }
     }
 }

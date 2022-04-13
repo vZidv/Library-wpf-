@@ -191,7 +191,7 @@
 
         <Button Content="Назад" x:Name="back_button"
             Height="35" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0"
-            Style="{DynamicResource RoundedButtonApp}"  />
+            Style="{DynamicResource RoundedButtonApp}" Click="back_button_Click"  />
 
         <TextBlock Text="Выданная книга" Style="{DynamicResource TextBlockHeaderStyle}"
                    Grid.Row="1" Margin="15,5,0,5"/>
@@ -210,16 +210,16 @@
 
             </StackPanel>
             <StackPanel>
-                <TextBox x:Name="nameClient_textBox"
+                <TextBox x:Name="nameClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="secondNameClient_textBox"
+                <TextBox x:Name="secondNameClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="patronymicClient_textBox"
+                <TextBox x:Name="patronymicClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="phoneNumberClient_textBox"
+                <TextBox x:Name="phoneNumberClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
 
@@ -236,13 +236,14 @@
 
             </StackPanel>
             <StackPanel>
-                <TextBox x:Name="nameBook_textbox"  Width="170"
+                <TextBox x:Name="nameBook_textbox"  Width="170" IsReadOnly="True"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
-                <TextBox x:Name="authorBook_textbox"  Width="170"
+                <TextBox x:Name="authorBook_textbox"  Width="170" IsReadOnly="True"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
-                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="giveDate_datePecker"
+                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="giveDate_datePecker" IsEnabled="True" Focusable="False"
                     Width="170" Height="35" Style="{DynamicResource DatePickerStyle}" Margin="16"/>
-                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="lastDate_datePecker"
+
+                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="lastDate_datePecker" IsEnabled="True" Focusable="False"
                     Width="170" Height="35" Style="{DynamicResource DatePickerStyle}" Margin="16"/>
 
             </StackPanel>

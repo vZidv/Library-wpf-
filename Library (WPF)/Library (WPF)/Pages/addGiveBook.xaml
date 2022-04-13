@@ -45,10 +45,10 @@
                           Style="{DynamicResource TextBlockStyle}"/>
             </StackPanel>
             <StackPanel>
-                <TextBox x:Name="fullNameClient_textBox"
+                <TextBox x:Name="fullNameClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="overdueBook_textBox"
+                <TextBox x:Name="overdueBook_textBox" IsReadOnly="True"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
                 
             </StackPanel>

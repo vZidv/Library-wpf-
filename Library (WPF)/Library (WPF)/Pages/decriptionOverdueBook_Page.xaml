@@ -207,16 +207,16 @@
 
             </StackPanel>
             <StackPanel>
-                <TextBox x:Name="nameClient_textBox"
+                <TextBox x:Name="nameClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="secondNameClient_textBox"
+                <TextBox x:Name="secondNameClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="patronymicClient_textBox"
+                <TextBox x:Name="patronymicClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="phoneNumberClient_textBox"
+                <TextBox x:Name="phoneNumberClient_textBox" IsReadOnly="True"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
 
@@ -237,17 +237,17 @@
 
             </StackPanel>
             <StackPanel>
-                <TextBox x:Name="nameBook_textbox"  Width="170"
+                <TextBox x:Name="nameBook_textbox"  Width="170" IsReadOnly="True"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
-                <TextBox x:Name="authorBook_textbox"  Width="170"
+                <TextBox x:Name="authorBook_textbox"  Width="170" IsReadOnly="True"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
-                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="giveDate_datePecker"
+                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="giveDate_datePecker" Focusable="False"
                     Width="170" Height="35" Style="{DynamicResource DatePickerStyle}" Margin="16"/>
-                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="lastDate_datePecker"
+                <DatePicker  FontSize="17" Foreground="DarkGray" x:Name="lastDate_datePecker" Focusable="False"
                     Width="170" Height="35" Style="{DynamicResource DatePickerStyle}" Margin="16"/>
-                <TextBox x:Name="penalty_textbox"  Width="170"
+                <TextBox x:Name="penalty_textbox"  Width="170" IsReadOnly="True"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
-                <TextBox x:Name="daysOverdueBook_textbox"  Width="170"
+                <TextBox x:Name="daysOverdueBook_textbox"  Width="170" IsReadOnly="True"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
             </StackPanel>
         </StackPanel>

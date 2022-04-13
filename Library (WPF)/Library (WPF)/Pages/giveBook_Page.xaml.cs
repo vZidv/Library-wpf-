@@ -94,14 +94,36 @@ namespace Library__WPF_.Pages
 
             if(table.Rows.Count > 1)
             {
+                
+                for (int i = 0; i < table.Rows.Count;)
+                {
+                    SqlDataAdapter adapter1 = new SqlDataAdapter($"Select NameClient,Surname,Patronymic From ClientsProf Where id = '{Convert.ToInt32(table.Rows[i][0])}'", connectClass.sqlCon);
+                    DataTable newTable = new DataTable();
+                    adapter1.Fill(newTable);
 
+                    string FullnameClient = $"{Convert.ToString(newTable.Rows[0][0])} {Convert.ToString(newTable.Rows[0][1])} {Convert.ToString(newTable.Rows[0][2])}";
+
+                    if (FullnameClient == clientFullName)
+                    {
+                        enterToDescription();
+                        return;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
             }
             else
+            {
+                enterToDescription();
+            }
+            void enterToDescription()
             {
                 connectClass.SqlConnect();
                 SqlCommand command = new SqlCommand($"Select Client From IssuedBooks WHERE LastDate = '{data}' And NameBook = N'{nameBook}' And Autor = N'{author}'", connectClass.sqlCon);
 
-                user.userMainFrame.Content = new Pages.discriptionGriveBook() { user = this.user , idClient = Convert.ToInt32(command.ExecuteScalar())};
+                user.userMainFrame.Content = new Pages.discriptionGriveBook() { user = this.user, idClient = Convert.ToInt32(command.ExecuteScalar()) };
             }
         }
     }

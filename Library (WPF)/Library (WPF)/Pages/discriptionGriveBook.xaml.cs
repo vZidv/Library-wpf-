@@ -51,5 +51,16 @@ namespace Library__WPF_.Pages
             phoneNumberClient_textBox.Text = Convert.ToString(table.Rows[0][8]);
 
         }
+
+        private void returnBook_button_Click(object sender, RoutedEventArgs e)
+        {
+            // sqlConnectClass.AddInHistory(textBox_nameBook, textBox_autor, idClient, "Возврат");
+            connectClass.SqlConnect();
+
+            SqlCommand command = new SqlCommand($"DELETE FROM IssuedBooks WHERE Client = '{idClient}' and NameBook = N'{nameBook_textbox.Text}'and Autor = N'{authorBook_textbox.Text}'", connectClass.sqlCon);
+            command.ExecuteNonQuery();
+
+            user.userMainFrame.Content = new Pages.giveBook_Page() { user = this.user };
+        }
     }
 }

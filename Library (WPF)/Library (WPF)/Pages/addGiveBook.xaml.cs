@@ -84,8 +84,12 @@ namespace Library__WPF_.Pages
             connectClass.SqlConnect();
             SqlCommand command = new SqlCommand($"Select id From ClientsProf WHERE NameClient = N'{name}' AND Surname = N'{secondName}' AND Patronymic = N'{patronymic}'", connectClass.sqlCon);
             idClient = (int)command.ExecuteScalar();
-
             fullNameClient_textBox.Text = name + " " + secondName + " " + patronymic;
+
+            SqlDataAdapter adapter1 = new SqlDataAdapter($"SELECT * FROM OverdueBooks WHERE Client = N'{idClient}'", connectClass.sqlCon);
+            DataTable overdue = new DataTable();
+            adapter1.Fill(overdue);
+            overdueBook_textBox.Text = Convert.ToString(overdue.Rows.Count);
         }
 
         private void chooseBook_button_Click(object sender, RoutedEventArgs e)
@@ -164,6 +168,13 @@ namespace Library__WPF_.Pages
             }
             MessageBox.Show("Книги выданы!", "Сообщение");
 
+        }
+
+        private void deleteBook_button_Click(object sender, RoutedEventArgs e)
+        {
+            int r = giveBooks_Dg.SelectedIndex;
+            tableBooks.Rows[r].Delete();
+            giveBooks_Dg.ItemsSource = tableBooks.DefaultView;
         }
     }
 }

@@ -48,7 +48,7 @@
                 <TextBox x:Name="fullNameClient_textBox"
                     Width="170" Height="35"
                     Style="{DynamicResource TextboxStyle}"/>
-                <TextBox x:Name="authorBook_textBox"
+                <TextBox x:Name="overdueBook_textBox"
                     Style="{DynamicResource TextboxStyle}"  Height="35"/>
                 
             </StackPanel>
@@ -105,7 +105,7 @@
                 <DataGridTemplateColumn Header="Удалить" MinWidth="40" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Удалить"/>
+                            <Button Content="Удалить" x:Name="deleteBook_button" Click="deleteBook_button_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

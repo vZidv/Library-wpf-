@@ -31,7 +31,7 @@
                     Style="{DynamicResource RoundedButtonForMenuApp}" Click="history_Menu_Click"
                 />
             <Button Content="Просроченные" x:Name="overdue_Menu"
-                    Style="{DynamicResource RoundedButtonForMenuApp}"
+                    Style="{DynamicResource RoundedButtonForMenuApp}" Click="overdue_Menu_Click"
                 />
         </StackPanel>
         <Frame x:Name="userMainFrame"

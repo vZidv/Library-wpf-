@@ -54,5 +54,10 @@ namespace Library__WPF_.Windows
         {
             userMainFrame.Content = new Pages.histore_Page() { user = this };
         }
+
+        private void overdue_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            userMainFrame.Content = new Pages.overdueBooks_Page() { user = this };
+        }
     }
 }

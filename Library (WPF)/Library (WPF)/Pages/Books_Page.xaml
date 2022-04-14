@@ -30,7 +30,9 @@
         <DataGrid x:Name="books_Dg"
             Grid.Row="1" Margin="7,0,7,10" AutoGenerateColumns="False" BorderThickness = "0" IsReadOnly="True">
             <DataGrid.Columns>
-             <DataGridTextColumn Binding="{Binding NameBook}" Header="Название книги" MinWidth="120" Width="*"/>
+             <DataGridTextColumn Binding="{Binding NameBook}" Header="Название книги" MinWidth="120" Width="*">
+                    
+                </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Autor}" Header="Автор" MinWidth="120" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Genre}" Header="Жанр" MinWidth="120" Width="*"/>
                 <DataGridTextColumn Binding="{Binding NumberOfBooks}" Header="Количество" MinWidth="120" Width="*"/>

@@ -20,7 +20,7 @@ namespace Library__WPF_.Classes
 
         public  void SqlConnect()
         {
-            sqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = F:\Артём\Проекты и их материалы\Library(Wpf)\Project\Library-wpf-\Library (WPF)\Library (WPF)\Library.mdf; Integrated Security = True");
+            sqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = F:\Артём\Проекты и их материалы\Library(Wpf)\ProjectL\Library-wpf-\Library (WPF)\Library (WPF)\Library.mdf; Integrated Security = True");
             sqlCon.Open();
         }
         public void LoadTable(string command,DataGrid dataGrid)

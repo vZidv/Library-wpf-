@@ -89,5 +89,10 @@ namespace Library__WPF_.Pages
 
             MessageBox.Show("Пользователь удалён!");
         }
+
+        private void settings_button_Click(object sender, RoutedEventArgs e)
+        {
+            admin.MainFrame.Content = new Pages.SettingsAdmin_Page() { admin = this.admin };
+        }
     }
 }

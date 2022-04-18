@@ -116,6 +116,9 @@
     <Compile Include="Pages\overdueBooks_Page.xaml.cs">
       <DependentUpon>overdueBooks_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SettingsAdmin_Page.xaml.cs">
+      <DependentUpon>SettingsAdmin_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\admin_Window.xaml.cs">
       <DependentUpon>admin_Window.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\overdueBooks_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsAdmin_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

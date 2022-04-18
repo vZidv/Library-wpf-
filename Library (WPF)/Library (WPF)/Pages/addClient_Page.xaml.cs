@@ -49,7 +49,7 @@ namespace Library__WPF_.Pages
             com.Parameters.AddWithValue("DateOfBirth", birthdayClient_datePecker.Text);
             com.Parameters.AddWithValue("NumberOfPhone", phoneClient_textbox.Text);
             com.Parameters.AddWithValue("IndexClient", indexClient_textbox.Text);
-            com.Parameters.AddWithValue("Address", addressClient_textbox.Text);
+            com.Parameters.AddWithValue("Address", Convert.ToString( addressClient_textbox.Text));
 
             com.ExecuteNonQuery();
 

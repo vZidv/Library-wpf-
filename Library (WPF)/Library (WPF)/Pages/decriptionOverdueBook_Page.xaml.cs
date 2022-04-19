@@ -54,7 +54,10 @@ namespace Library__WPF_.Pages
 
             var date = (DateTime.Now - Convert.ToDateTime( lastDate_datePecker.Text)).Days;
             daysOverdueBook_textbox.Text =Convert.ToString( date);
-            penalty_textbox.Text = Convert.ToString(Convert.ToInt32(daysOverdueBook_textbox.Text) * 10);
+
+            SqlCommand sqlCommand = new SqlCommand($"Select Penalty from SettingLibrary Where id ='{1}'", connectClass.sqlCon);
+
+            penalty_textbox.Text = Convert.ToString(Convert.ToInt32(daysOverdueBook_textbox.Text) * Convert.ToInt32(sqlCommand.ExecuteScalar()));
         }
 
         private void back_button_Click(object sender, RoutedEventArgs e)

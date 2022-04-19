@@ -26,6 +26,23 @@
         <Button Content="Обновить" x:Name="refresh_button"
             Height="35" Width="130" HorizontalAlignment="Right" Margin="0,0,10,0"
             Style="{DynamicResource RoundedButtonApp}" Click="refresh_button_Click"/>
+        <TextBox x:Name="search_textbox"
+            Height="35" Width="160" Style="{DynamicResource TextboxStyle}" Margin="0"
+            VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Left" TextChanged="search_textbox_TextChanged"/>
+        <TextBlock FontSize="16" Text="Поиск" FontWeight="Bold" Foreground="#FFC5C5C5"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="1" Margin="0,0,80,0"
+                   IsHitTestVisible="False">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text,ElementName=search_textbox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
 
         <DataGrid x:Name="books_Dg"
             Grid.Row="1" Margin="7,0,7,10" AutoGenerateColumns="False" BorderThickness = "0" IsReadOnly="True">

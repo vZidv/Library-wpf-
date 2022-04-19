@@ -125,9 +125,12 @@ namespace Library__WPF_.Pages
 
         private void addGiveBook_button_Click(object sender, RoutedEventArgs e)
         {
+            connectClass.SqlConnect();
+
+            SqlCommand sqlCommand = new SqlCommand($"Select LastDays from SettingLibrary where id = '{1}'", connectClass.sqlCon);
             DateTime date = DateTime.Now;
             date.ToString("dd MMMM yyyy");
-            DateTime LastDat = date + new TimeSpan(days: 30, hours: 0, minutes: 0, seconds: 0);
+            DateTime LastDat = date + new TimeSpan(days: Convert.ToInt32(sqlCommand.ExecuteScalar()), hours: 0, minutes: 0, seconds: 0);
             LastDat.ToString("dd MMMM yyyy");
             connectClass.SqlConnect();
 

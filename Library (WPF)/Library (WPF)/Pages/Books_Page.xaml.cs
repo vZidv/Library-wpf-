@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Library__WPF_.Pages
 {
@@ -69,6 +70,11 @@ namespace Library__WPF_.Pages
             command.ExecuteNonQuery();
 
             MessageBox.Show("Книга удалёна!");
+        }
+
+        private void search_textbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            (books_Dg.ItemsSource as DataTable).DefaultView.RowFilter = $"[NameBook] LIKE '%{search_textbox.Text}%'";
         }
     }
 }
